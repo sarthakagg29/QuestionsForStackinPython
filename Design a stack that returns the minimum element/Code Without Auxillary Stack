@@ -1,0 +1,71 @@
+#Making Class and Backend
+class ministack:
+    def __init__(self,n=10):
+        self.top = -1
+        self.stack = [0 for i in range(n)]
+        self.minimum = None
+        
+    def Push(self,ele):
+        if self.top == len(self.stack) - 1:
+            raise Exception("Stack OverFlow")
+        elif self.top == -1:
+            self.top += 1
+            self.stack[self.top] = ele
+            self.minimum = ele
+        elif ele < self.minimum:
+            self.top += 1
+            self.stack[self.top] = 2*ele - self.minimum
+            self.minimum = ele
+        else:
+            self.top += 1
+            self.stack[self.top] = ele
+        
+    def Pop(self):
+        if self.top == -1:
+            raise Exception("Stack UnderFlow")
+        t = self.stack[self.top]
+        if t < self.minimum:
+            self.minimum = 2*self.minimum - t
+        self.top -= 1
+        return t
+    
+    def display(self):
+        for i in range(self.top,-1,-1):
+            print(self.stack[i],"-->",sep="",end=" ")
+        print()
+    
+    def minimumvalue(self):
+        return self.min
+   
+# Printing Statements and FrontEnd
+print("This is a design a stack that provides minimum element without auxillary element")
+n = int(input("Enter the Height of the Stack : "))
+var = 0
+Stack1 = ministack(n)
+while var == 0:
+    var1 = int(input("Select 0 for Push and anything for Pop : "))
+    if var1 == 0:
+        ele = int(input("Please enter the element to Push : "))
+        Stack1.Push(ele)
+    else:
+        Stack1.Pop()
+        print("The element is poped from the Stack")
+    var = int(input("If you want to push or pop press 0 else to result press 1 : "))
+print("The minimum element is : ",Stack1.minimum)
+
+#OutPut
+This is a design a stack that provides minimum element without auxillary element
+Enter the Height of the Stack : 5
+Select 0 for Push and anything for Pop : 0
+Please enter the element to Push : 12
+If you want to push or pop press 0 else to result press 1 : 0
+Select 0 for Push and anything for Pop : 0
+Please enter the element to Push : 34
+If you want to push or pop press 0 else to result press 1 : 0
+Select 0 for Push and anything for Pop : 0
+Please enter the element to Push : 2
+If you want to push or pop press 0 else to result press 1 : 0
+Select 0 for Push and anything for Pop : 1
+The element is poped from the Stack
+If you want to push or pop press 0 else to result press 1 : 1
+The minimum element is :  12
