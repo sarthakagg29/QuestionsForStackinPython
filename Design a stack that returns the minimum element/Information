@@ -1,0 +1,26 @@
+Here 
+I used a main stack and a supplementary stack.
+
+The Supplementary Stack is defined as a inner class inside the Main Stack Outer Class.
+The Developement of Both Stacks are by using list and a top variable acting as an pointer to define where we are in the stack.
+
+We Created an Auxillary Stack as an instance/object of Supplementary Stack Class as soon as Stack 1 is processed into becoming Main Stack Outer Class.
+
+Top and List : Stack are Data memebers of Supplementary Stack Class
+In Addition to above, auxillary stack is also a data member of Main Stack Class
+
+Both have Methods of Push, Pop, Size, Peek and Display.
+
+According to user, they will be asked to write a number indicating height of the Stack.
+Height meaning how many levels can the stack include.
+The variable n is responsible for height in the __init__ dunder and has defualt value of 10.
+Auxillary Stack will also be of same height.
+
+Now The user will enter the number of its choice to be pushed into the stack using LIFO and they will be pushed into main stack.
+This will automatically execute the Auxillary Stack Push Method as well but with a condition.
+The Condition being the element that will be pushed must be smaller to the element stored in the auxillary stack.
+For the comparsion to begin, first element will be pushed in both the stacks no matter what.
+
+The User can see the display of Stack1 
+and it would the first minimum element and a bonus.
+Bonus being the second smallest element as well.
