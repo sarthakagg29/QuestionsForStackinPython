@@ -1,0 +1,123 @@
+#The Backend where an Outer and an Inner Class are Created
+class MainStack:
+    def __init__(self,n = 10):
+        self.stack = [0 for i in range(n)]
+        self.top = -1
+        self.auxillarystack = self.SupplementaryStack(n)
+    
+    def Push(self,ele):
+        if self.top == len(self.stack) - 1:
+            raise Exception("Stack OverFlow")
+        self.top += 1
+        self.stack[self.top] = ele
+        self.auxillarystack.Push(ele)
+        
+    def Pop(self):
+        if self.top == -1:
+            raise Exception("Stack UnderFlow",self.top)
+        self.top -= 1
+        return self.stack[self.top]
+    
+    def display(self):
+        for i in range(self.top,-1,-1):
+            print("|" + str(self.stack[i]) + "|" + "-->",end=" ",sep="")
+        print()
+    
+    def size(self):
+        return self.top + 1
+    
+    def peek(self):
+        return self.stack[self.top]
+    
+    class SupplementaryStack:
+        def __init__(self,n = 10):
+            self.stack = [0 for i in range(n)]
+            self.top = -1
+
+        def Push(self,ele):
+            if self.top == len(self.stack) - 1:
+                raise Exception("Stack OverFlow")
+            if self.stack[self.top] > ele:
+                self.top += 1
+                self.stack[self.top] = ele
+            elif self.top == -1:
+                self.top += 1
+                self.stack[self.top] = ele
+            else:
+                pass
+
+        def Pop(self):
+            if self.top == -1:
+                raise Exception("Stack UnderFlow",self.top)
+            self.top -= 1
+            return self.stack[self.top]
+
+        def display(self):
+            for i in range(self.top,-1,-1):
+                print("|" + str(self.stack[i]) + "|" + "-->",end=" ",sep="")
+            print()
+
+        def size(self):
+            return self.top + 1
+
+        def peek(self):
+            if self.top == -1:
+                raise Exception("Stack UnderFlow",self.top)
+            return self.stack[self.top]
+            
+#The Frontend And Printing of the Elements  
+print("This is a stack that has been designed to get a minimum stack")
+var = 0
+while var == 0:
+    n = int(input("Please Enter the height of Stack : "))
+    Stack1 = MainStack(n)
+    for i in range(n):
+        ele = int(input("Enter the numerical value to be entered in stack : "))
+        Stack1.Push(ele)
+    print("The Stack is :")
+    Stack1.display()
+    Stack1.auxillarystack.display()
+    print("Hence the minimum element is", Stack1.auxillarystack.peek())
+    Stack1.auxillarystack.Pop()
+    Stack1.auxillarystack.display()
+    print('The Second minimum element is', Stack1.auxillarystack.peek())
+    
+    
+    var = int(input("If you want to operate this algorthm one more time, press 0 else 1 : "))
+    if var == 1:
+        break
+        
+        
+#Example of an OutPut
+This is a stack that has been designed to get a minimum stack
+Please Enter the height of Stack : 5
+Enter the numerical value to be entered in stack : 20
+Enter the numerical value to be entered in stack : 40
+Enter the numerical value to be entered in stack : 30
+Enter the numerical value to be entered in stack : 10
+Enter the numerical value to be entered in stack : 50
+The Stack is :
+|50|--> |10|--> |30|--> |40|--> |20|--> 
+|10|--> |20|--> 
+Hence the minimum element is 10
+|20|--> 
+The Second minimum element is 20
+If you want to operate this algorthm one more time, press 0 else 1 : 0
+Please Enter the height of Stack : 10
+Enter the numerical value to be entered in stack : 20
+Enter the numerical value to be entered in stack : 40
+Enter the numerical value to be entered in stack : 60
+Enter the numerical value to be entered in stack : 80
+Enter the numerical value to be entered in stack : 100
+Enter the numerical value to be entered in stack : 90
+Enter the numerical value to be entered in stack : 70
+Enter the numerical value to be entered in stack : 50
+Enter the numerical value to be entered in stack : 30
+Enter the numerical value to be entered in stack : 10
+The Stack is :
+|10|--> |30|--> |50|--> |70|--> |90|--> |100|--> |80|--> |60|--> |40|--> |20|--> 
+|10|--> |20|--> 
+Hence the minimum element is 10
+|20|--> 
+The Second minimum element is 20
+If you want to operate this algorthm one more time, press 0 else 1 : 1
