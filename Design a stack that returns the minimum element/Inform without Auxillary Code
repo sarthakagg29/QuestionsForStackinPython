@@ -1,0 +1,28 @@
+In this miniclass was created.
+No Inner Class was created since one has to do it without auxillary stack.
+
+A particular mathematical operation is used to define a stack which tells the minimum elements with all the elements present even after push and pop.
+
+Here the importance is given to element which is minimum not the numbers that are stored in the stack.
+That is why not used the display method in output code.
+
+In this code, we enhanced the Push function and used the minimum variable in the class itelf to print the minimum element.
+Yes as elements are pushing and popping, our minimum is adjusted and updated regularly.
+
+For that, we go to Push Fuction.
+in this, we add an element with conditions.
+
+If ele is greater than minimum then it goes in stack as it is.
+If ele is smaller then the number (2*ele - minimum) will go in stack rather than element.
+That element will be stored in the minimum element.
+The 2*ele - minimum will be smaller than old minimum and so does the element. Try it 
+So that does not effected our answer excluding if we want to display the proper elements but our focus is on minimum element form stack.
+
+Now For Push Function
+If the element popped out is larger than minimum then no changes.
+But if element is smaller than minimum then minimum would be updated and other steps will remain same.
+Here it will be updated to = 2*minimum - t where t = 2*ele - minimum(this is old minimum before ele was pushed).
+So here if we equal we find ele = minimum and thus answer would be old minimum 
+This means the minimum is getting updated in every situation.
+
+Here the Space dimensionality of using extra stack to get an element is reduced as well as time complexity is still O(n).
