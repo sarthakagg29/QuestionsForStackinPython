@@ -1,0 +1,150 @@
+#Backend and How the Function Goes
+class twostacks:
+    def __init__(self,n):
+        self.stack = [0 for i in range(n)]
+        self.ftop = -1
+        self.ltop = len(self.stack)
+    
+    def Push_first(self,ele):
+        if self.ftop + 1 == self.ltop:
+            raise Exception("First Stack OverFlow")
+        self.ftop += 1
+        self.stack[self.ftop] = ele
+
+    def Push_Second(self,ele):
+        if self.ftop + 1 == self.ltop:
+            raise Exception("Second Stack Overflow")
+        self.ltop -= 1
+        self.stack[self.ltop] = ele
+    
+    def Pop_First(self):
+        if self.ftop == -1:
+            raise Exception("First Stack UnderFlow")
+        t = self.stack[self.ftop]
+        self.ftop -= 1
+        return t
+    
+    def Pop_Second(self):
+        if self.ltop == len(self.stack):
+            raise Exception("Second Stack UnderFlow")
+        t = self.stack[self.ltop]
+        self.ltop += 1
+        return t
+    
+    def display(self):
+        print("The First Stack is :")
+        for i in range(self.ftop,-1,-1):
+            print("|",self.stack[i],"|",sep=" ")
+        print()
+        print("The Second Stack is :")
+        for i in range(self.ltop,len(self.stack)):
+            print("|",self.stack[i],"|",sep=" ")
+        print()
+
+# Testing and Frontend
+main = 0
+while main == 0:
+    print("This design of stack will allow two stacks to be accomplished in a single stack")
+    n1 = int(input("Enter the Height of the First Stack : "))
+    n2 = int(input("Enter the height of the Second Stack : "))
+    n = n1 + n2
+    print("Our Main Stack Height is : ",n)
+    Stack1 = twostacks(n)
+    val = -1
+    conti = 10
+    print("Press 0 for Pushing element in first Stack","Press 1 for Pushing element in Second Stack", "Press 2 for Popping element from first Stack","Press 3 for Popping element from Second Stack","Press 4 for displaying both the stacks",sep="\n")
+    while conti == 10:
+        val = int(input("Enter 0 or 1 or 2 or 3 or 4 for doing operation : "))
+        if val == 0:
+            ele = int(input("Enter the element to be pushed in first Stack : "))
+            Stack1.Push_first(ele)
+            print(ele," : the element has been pushed in the First Stack")
+            conti = int(input("If you wish to continue further Press 10 else anything to exit : "))
+        if val == 1:
+            ele = int(input("Enter the element to be pushed in Second Stack : "))
+            Stack1.Push_Second(ele)
+            print(ele," : the element has been pushed in the Second Stack")
+            conti = int(input("If you wish to continue further Press 10 else anything to exit : "))
+        if val == 2:
+            ele = Stack1.Pop_First()
+            print(ele," : the element has been pooped from the First Stack")
+            conti = int(input("If you wish to continue further Press 10 else anything to exit : "))
+        if val == 3:
+            ele = Stack1.Pop_Second()
+            print(ele," : the element has been pooped from the Second Stack")
+            conti = int(input("If you wish to continue further Press 10 else anything to exit : "))
+        if val == 4:
+            Stack1.display()
+            conti = int(input("If you wish to continue further Press 10 else anything to exit : "))
+    main = int(input("If you want to make another Stack Press 0 else anything to exit : "))
+    
+    #OutPut 
+    This design of stack will allow two stacks to be accomplished in a single stack
+Enter the Height of the First Stack : 4
+Enter the height of the Second Stack : 3
+Our Main Stack Height is :  7
+Press 0 for Pushing element in first Stack
+Press 1 for Pushing element in Second Stack
+Press 2 for Popping element from first Stack
+Press 3 for Popping element from Second Stack
+Press 4 for displaying both the stacks
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 0
+Enter the element to be pushed in first Stack : 10
+10  : the element has been pushed in the First Stack
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 0
+Enter the element to be pushed in first Stack : 20
+20  : the element has been pushed in the First Stack
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 0
+Enter the element to be pushed in first Stack : 30
+30  : the element has been pushed in the First Stack
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 40
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 0
+Enter the element to be pushed in first Stack : 40
+40  : the element has been pushed in the First Stack
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 1
+Enter the element to be pushed in Second Stack : 50
+50  : the element has been pushed in the Second Stack
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 1
+Enter the element to be pushed in Second Stack : 60
+60  : the element has been pushed in the Second Stack
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 1
+Enter the element to be pushed in Second Stack : 70
+70  : the element has been pushed in the Second Stack
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 4
+The First Stack is :
+| 40 |
+| 30 |
+| 20 |
+| 10 |
+
+The Second Stack is :
+| 70 |
+| 60 |
+| 50 |
+
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 2
+40  : the element has been pooped from the First Stack
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 3
+70  : the element has been pooped from the Second Stack
+If you wish to continue further Press 10 else anything to exit : 10
+Enter 0 or 1 or 2 or 3 or 4 for doing operation : 4
+The First Stack is :
+| 30 |
+| 20 |
+| 10 |
+
+The Second Stack is :
+| 60 |
+| 50 |
+
+If you wish to continue further Press 10 else anything to exit : 2
+If you want to make another Stack Press 0 else anything to exit : 123
