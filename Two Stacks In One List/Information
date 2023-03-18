@@ -1,0 +1,15 @@
+In this Code, we have used a single list to support two stacks.
+I was implementing stacks using list data structure and this time two stacks in a same list.
+
+Instead of giving particular length of each stack in the list.
+I used two tops of two stacks one starting from the position -1 and other from length of stack.
+
+in this The Time Complexity is O(1) and Space Complexity is the size of list no empty spaces.
+
+Here I used a stack class having Different Methods in it which can be accessed by writing and following instructions.
+
+In the TwoStack Class, the length of stack is decided by the combination of height of First Stack and Seocnd Stack.
+The Tops are ftop for First Stack from -1 and ltop for Second Stack from length of Stack.
+
+Eveytime an element is pushed into first Stack, ftop will be increased by 1 and element will be pushed into the list.
+With Conditions including, If ftop index + 1 is equal is to index of ltop then the Stack will OverFlow.
